@@ -84,8 +84,8 @@ namespace ScreenRecorderCs
         /// <param name="isDifferentROI">trueであれば、ROI領域に変化あり。赤色で矩形描画。falseであれば変化なし。青色で矩形描画</param>
         private void UpdateSmallImage(bool isDifferentROI)
         {
-            Bitmap ROIPBmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Graphics g = Graphics.FromImage(ROIPBmp);
+            Bitmap smallBmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Graphics g = Graphics.FromImage(smallBmp);
             // 縮小画像を作る
             g.DrawImage(parentImage,
                 new Rectangle(0, 0, (int)(parentImage.Width * imageMagnification), (int)(parentImage.Height * imageMagnification)),
@@ -108,7 +108,7 @@ namespace ScreenRecorderCs
                 decimal.ToInt32(rightNumericUpDown.Value - leftNumericUpDown.Value) * imageMagnification,
                 decimal.ToInt32(bottomNumericUpDown.Value - topNumericUpDown.Value) * imageMagnification);
             pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
-            pictureBox1.Image = ROIPBmp;
+            pictureBox1.Image = smallBmp;
             pictureBox1.Refresh();
             g.Dispose();
         }
@@ -121,11 +121,11 @@ namespace ScreenRecorderCs
         /// <returns>切り出したROI画像</returns>
         public Bitmap GetROIImage(Image img)
         {
-            Bitmap ROIBmp = new Bitmap(decimal.ToInt32(rightNumericUpDown.Value - leftNumericUpDown.Value), decimal.ToInt32(bottomNumericUpDown.Value - topNumericUpDown.Value));
-            Graphics g = Graphics.FromImage(ROIBmp);
-            g.DrawImage(img, new Rectangle(0, 0, ROIBmp.Width, ROIBmp.Height), GetRectangle(), GraphicsUnit.Pixel);
+            Bitmap roiBmp = new Bitmap(decimal.ToInt32(rightNumericUpDown.Value - leftNumericUpDown.Value), decimal.ToInt32(bottomNumericUpDown.Value - topNumericUpDown.Value));
+            Graphics g = Graphics.FromImage(roiBmp);
+            g.DrawImage(img, new Rectangle(0, 0, roiBmp.Width, roiBmp.Height), GetRectangle(), GraphicsUnit.Pixel);
             g.Dispose();
-            return ROIBmp;
+            return roiBmp;
         }
 
 
