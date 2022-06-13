@@ -48,13 +48,9 @@ namespace ScreenRecorderCs
         /// 新しい画像を取得し、管理している複数のROI設定を更新、ROI領域をチェック。いずれかのROI画像で変化ありと判断できればtrueを返す
         /// </summary>
         /// <returns>複数のROI画像のいずれかで変化があればtrue</returns>
-        private bool isROIDifferent()
+        private bool IsROIDifferent()
         {
             bool isDifferentROI = false;
-            // 新しいスクリーンキャプチャ
-            desktopBmp = GetDesktopImage();
-            // 記録範囲の設定に反映
-            rorsp.UpdateImage(desktopBmp);
             // ROI設定それぞれと、ROI領域を比較
             foreach (Control c in flowLayoutPanel1.Controls)
             {
@@ -211,9 +207,22 @@ namespace ScreenRecorderCs
         {
             counter++;
             WriteLog(counter.ToString());
-            if (isROIDifferent())
+            // 新しいスクリーンキャプチャ
+            desktopBmp = GetDesktopImage();
+            // 記録範囲の設定に反映
+            rorsp.UpdateImage(desktopBmp);
+            if (flowLayoutPanel1.Controls.Count == 0)
             {
+                // 監視領域が無いので強制的に保存
                 ExecSave();
+            }
+            else
+            {
+                // 監視領域があれば、変化有無を判定する
+                if (IsROIDifferent())
+                {
+                    ExecSave();
+                }
             }
         }
 
@@ -259,8 +268,11 @@ namespace ScreenRecorderCs
             {
                 if (flowLayoutPanel1.Controls.Count == 0)
                 {
-                    MessageBox.Show("監視設定を1つ以上作成してください", "", MessageBoxButtons.OK);
-                    return;
+                    MessageBox.Show("監視設定がありません。指定時間ごとに保存します", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("指定時間ごとに監視設定に従い判定し、変化があれば保存します", "", MessageBoxButtons.OK);
                 }
                 // 停止しているので、運転開始する
                 startMovieButton.BackColor = Color.Red;
@@ -295,7 +307,10 @@ namespace ScreenRecorderCs
         /// <param name="e"></param>
         private void Save1ShotButton_Click(object sender, EventArgs e)
         {
+            // 新しいスクリーンキャプチャ
             desktopBmp = GetDesktopImage();
+            // 記録範囲の設定に反映
+            rorsp.UpdateImage(desktopBmp);
             ExecSave();
         }
     }
