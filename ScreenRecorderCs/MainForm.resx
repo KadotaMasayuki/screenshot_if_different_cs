@@ -120,9 +120,9 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="addROIPanelButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVEhL7c0xCgAwDAJA///pFjoGbUAcPXATRSWdkbge
-        rHrwzBE3Eis7kVjZicTKTiyRkZ8erHpQDHABJcV/gbfBCywAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAADxJREFUSEvtzTEKADAMAkD//+kWOgZtQBw9cBNFJZ2RuB6sevDMETcSKzuRWNmJ
+        xMpOLJGRnx6selAMcAElxX+Bt8ELLAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="setDirectoryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

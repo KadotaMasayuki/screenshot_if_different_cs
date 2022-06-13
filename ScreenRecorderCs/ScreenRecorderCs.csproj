@@ -57,6 +57,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RORSettingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RORSettingPanel.Designer.cs">
+      <DependentUpon>RORSettingPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ROISettingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RORSettingPanel.resx">
+      <DependentUpon>RORSettingPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ROISettingPanel.resx">
       <DependentUpon>ROISettingPanel.cs</DependentUpon>
     </EmbeddedResource>
